@@ -29,60 +29,63 @@ Perfect for creating, editing, and managing courses — with a clean admin inter
 
 ## 🏗️ Project Structure
 
-app
- ┣ (auth)
- ┃ ┣ login
- ┃ ┃ ┣ _components
- ┃ ┃ ┃ ┗ LoginForm.tsx
- ┃ ┃ ┗ page.tsx
- ┃ ┣ verify-request
- ┃ ┃ ┗ page.tsx
- ┃ ┗ layout.tsx
- ┣ (main)
- ┃ ┣ _components
- ┃ ┃ ┣ Navbar.tsx
- ┃ ┃ ┗ UserDropdown.tsx
- ┃ ┣ layout.tsx
- ┃ ┗ page.tsx
- ┣ admin
- ┃ ┣ courses
- ┃ ┃ ┣ create
- ┃ ┃ ┃ ┣ actions.ts
- ┃ ┃ ┃ ┗ page.tsx
- ┃ ┃ ┣ [courseId]
- ┃ ┃ ┃ ┗ edit
- ┃ ┃ ┃ ┃ ┣ _components
- ┃ ┃ ┃ ┃ ┃ ┣ CourseStructure.tsx
- ┃ ┃ ┃ ┃ ┃ ┣ EditCoursesForm.tsx
- ┃ ┃ ┃ ┃ ┃ ┗ SortableItem.tsx
- ┃ ┃ ┃ ┃ ┣ actions.ts
- ┃ ┃ ┃ ┃ ┗ page.tsx
- ┃ ┃ ┣ _components
- ┃ ┃ ┃ ┗ AdminCourseCard.tsx
- ┃ ┃ ┗ page.tsx
- ┃ ┣ data.json
- ┃ ┣ layout.tsx
- ┃ ┗ page.tsx
- ┣ api
- ┃ ┣ auth
- ┃ ┃ ┗ [...all]
- ┃ ┃ ┃ ┗ route.ts
- ┃ ┣ s3
- ┃ ┃ ┣ delete
- ┃ ┃ ┃ ┗ route.ts
- ┃ ┃ ┗ upload
- ┃ ┃ ┃ ┗ route.ts
- ┃ ┗ send
- ┃ ┃ ┗ route.ts
- ┣ data
- ┃ ┗ admin
- ┃ ┃ ┣ admin-get-course.ts
- ┃ ┃ ┣ admin-get-courses.ts
- ┃ ┃ ┗ require-admin.ts
- ┣ not-admin
- ┃ ┗ page.tsx
- ┣ globals.css
- ┗ layout.tsx
+app/
+├── (auth)/                      # Authentication routes (grouped but path is /login, /verify-request)
+│   ├── login/
+│   │   ├── _components/
+│   │   │   └── LoginForm.tsx
+│   │   └── page.tsx             # /login
+│   ├── verify-request/
+│   │   └── page.tsx             # /verify-request
+│   └── layout.tsx              # Auth layout wrapper
+│
+├── (main)/                      # Main app layout group (renders at /)
+│   ├── _components/
+│   │   ├── Navbar.tsx
+│   │   └── UserDropdown.tsx
+│   ├── layout.tsx              # Main layout wrapper (e.g., for Navbar)
+│   └── page.tsx                # Home page route at /
+│
+├── admin/                       # Admin-only routes
+│   ├── courses/
+│   │   ├── create/
+│   │   │   ├── actions.ts       # Server actions for course creation
+│   │   │   └── page.tsx         # /admin/courses/create
+│   │   ├── [courseId]/          # Dynamic route for individual course
+│   │   │   └── edit/
+│   │   │       ├── _components/
+│   │   │       │   ├── CourseStructure.tsx
+│   │   │       │   ├── EditCoursesForm.tsx
+│   │   │       │   └── SortableItem.tsx
+│   │   │       ├── actions.ts   # Server actions for editing
+│   │   │       └── page.tsx     # /admin/courses/[courseId]/edit
+│   │   ├── _components/
+│   │   │   └── AdminCourseCard.tsx
+│   │   └── page.tsx             # /admin/courses
+│   ├── data.json                # Sample data or seed content
+│   ├── layout.tsx              # Admin layout
+│   └── page.tsx                # /admin
+│
+├── api/                         # API routes (App Router-based)
+│   ├── auth/
+│   │   └── [...all]/route.ts    # Auth handler (e.g., next-auth)
+│   ├── s3/
+│   │   ├── delete/route.ts      # File delete handler
+│   │   └── upload/route.ts      # File upload handler
+│   └── send/route.ts            # Email or notification sending
+│
+├── data/                        # Local helpers or db logic
+│   └── admin/
+│       ├── admin-get-course.ts
+│       ├── admin-get-courses.ts
+│       └── require-admin.ts     # Auth guard for admin routes
+│
+├── not-admin/
+│   └── page.tsx                 # Shown to non-admin users accessing admin pages
+│
+├── globals.css                  # Global styles
+└── layout.tsx                   # Root layout (applies to the whole app)
+
 
 
 
