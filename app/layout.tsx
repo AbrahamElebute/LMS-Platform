@@ -38,7 +38,7 @@ export default function RootLayout({
         >
           <BProgress>{children}</BProgress>
         </ThemeProvider>
-        <Toaster />
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );

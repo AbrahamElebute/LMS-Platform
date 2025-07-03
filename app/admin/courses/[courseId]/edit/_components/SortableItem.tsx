@@ -40,7 +40,7 @@ export default function SortableItem({
       style={style}
       {...attributes}
       className={cn(
-        "touch-none",
+        "touch-none block",
         className,
         isDragging ? "z-10 border-primary" : ""
       )}
